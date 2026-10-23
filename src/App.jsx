@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import AboutUs from "./AboutUs";
 import ProductList from "./ProductList";
@@ -32,8 +32,6 @@ return ( <div className="landing-page"> <div className="landing-content"> <h1>Pa
 }
 
 function App() {
-const [cart, setCart] = useState([]);
-
 return ( <Routes>
 <Route path="/" element={<Home />} />
 
@@ -43,19 +41,27 @@ return ( <Routes>
     element={
       <>
         <Navbar />
-        <ProductList cart={cart} setCart={setCart} />
+        <ProductList />
       </>
     }
   />
 
-  <Route path="/about" element={<AboutUs />} />
+  <Route
+    path="/about"
+    element={
+      <>
+        <Navbar />
+        <AboutUs />
+      </>
+    }
+  />
 
   <Route
     path="/cart"
     element={
       <>
         <Navbar />
-        <CartItem cart={cart} setCart={setCart} />
+        <CartItem />
       </>
     }
   />
